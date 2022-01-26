@@ -1,0 +1,730 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:WebApi.Controllers.ProductController">
+            <summary>
+            The product controller
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.ProductController.#ctor(WebApi.Repository.IRepository.IProductRepository,AutoMapper.IMapper)">
+            <summary>
+            The product controller constructor
+            </summary>
+            <param name="iProductRepository"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:WebApi.Controllers.ProductController.GetProducts">
+            <summary>
+            Get list of products
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.ProductController.GetProduct(System.Int32)">
+            <summary>
+            Get individual products
+            </summary>
+            <param name="productId">The id of the product</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.ProductController.CreateProduct(WebApi.Models.DTOs.ProductCreateDto)">
+            <summary>
+            To create product
+            </summary>
+            <param name="productDto"></param>
+            <returns>The created product</returns>
+        </member>
+        <member name="M:WebApi.Controllers.ProductController.UpdateProduct(System.Int32,WebApi.Models.DTOs.ProductUpdateDto)">
+            <summary>
+            Update the product
+            </summary>
+            <param name="productId">The product Id</param>
+            <param name="productDto">The product model</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.ProductController.DeleteProduct(System.Int32)">
+            <summary>
+            Delete the product
+            </summary>
+            <param name="productId">The product id</param>
+            <returns></returns>
+        </member>
+        <member name="T:WebApi.Controllers.UserController">
+            <summary>
+            The user controller
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.UserController.#ctor(WebApi.Repository.IRepository.IUserRepository,AutoMapper.IMapper)">
+            <summary>
+            The user controller constructor
+            </summary>
+            <param name="iUserRepository"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:WebApi.Controllers.UserController.GetUsers">
+            <summary>
+            Get list of users
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.UserController.GetUser(System.Int32)">
+            <summary>
+            Get individual users
+            </summary>
+            <param name="userId">The id of the user</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.UserController.CreateUser(WebApi.Models.DTOs.UserCreateDto)">
+            <summary>
+            To create user
+            </summary>
+            <param name="userDto"></param>
+            <returns>The created user</returns>
+        </member>
+        <member name="M:WebApi.Controllers.UserController.UpdateUser(System.Int32,WebApi.Models.DTOs.UserDto)">
+            <summary>
+            Update the user
+            </summary>
+            <param name="userId">The user Id</param>
+            <param name="userDto">The user model</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.UserController.DeleteUser(System.Int32)">
+            <summary>
+            Delete the user
+            </summary>
+            <param name="userId">The user id</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.UserController.Authenticate(WebApi.Models.User)">
+            <summary>
+            User Authentication
+            </summary>
+            <param name="model">The user model</param>
+            <returns>OK</returns>
+        </member>
+        <member name="T:WebApi.Controllers.WeatherForecastController">
+            <summary>
+            The weather forecast controller class
+            </summary>
+        </member>
+        <member name="F:WebApi.Controllers.WeatherForecastController._logger">
+            <summary>
+            The logger object
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.WeatherForecastController.#ctor(Microsoft.Extensions.Logging.ILogger{WebApi.Controllers.WeatherForecastController})">
+            <summary>
+            The controller
+            </summary>
+            <param name="logger">The logger object</param>
+        </member>
+        <member name="M:WebApi.Controllers.WeatherForecastController.Get">
+            <summary>
+            The Get method
+            </summary>
+            <returns>List of items</returns>
+        </member>
+        <member name="T:WebApi.Data.ApplicationDbContext">
+            <summary>
+            The Db context class
+            </summary>
+        </member>
+        <member name="M:WebApi.Data.ApplicationDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{WebApi.Data.ApplicationDbContext})">
+            <summary>
+            The Db context
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="P:WebApi.Data.ApplicationDbContext.products">
+            <summary>
+            The product DB set
+            </summary>
+        </member>
+        <member name="P:WebApi.Data.ApplicationDbContext.users">
+            <summary>
+            The users DB set
+            </summary>
+        </member>
+        <member name="T:WebApi.Migrations.AddProductToDb">
+            <summary>
+            To Add item to db
+            </summary>
+        </member>
+        <member name="M:WebApi.Migrations.AddProductToDb.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            The up method is called when migrating up the database
+            </summary>
+            <param name="migrationBuilder"></param>
+        </member>
+        <member name="M:WebApi.Migrations.AddProductToDb.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <summary>
+            The down method is called when migrating down the database
+            </summary>
+            <param name="migrationBuilder">To perform migration operations</param>
+        </member>
+        <member name="M:WebApi.Migrations.AddProductToDb.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Implemented to build the TargetModel.
+            </summary>
+            <param name="modelBuilder">To build the model</param>
+        </member>
+        <member name="T:WebApi.Mapper.VendorMapping">
+            <summary>
+            The Vendor mapping class
+            </summary>
+        </member>
+        <member name="M:WebApi.Mapper.VendorMapping.#ctor">
+            <summary>
+            The vendor mapping constructor
+            </summary>
+        </member>
+        <member name="T:WebApi.Models.DTOs.ProductCreateDto">
+            <summary>
+            The product data transfer object model class
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.ProductCreateDto.SellerId">
+            <summary>
+            The select id that is mapped to identify the user
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.ProductCreateDto.Cost">
+            <summary>
+            The cost of product
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.ProductCreateDto.ProductName">
+            <summary>
+            The name of product
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.ProductCreateDto.AmountAvailable">
+            <summary>
+            The balance amount
+            </summary>
+        </member>
+        <member name="T:WebApi.Models.DTOs.ProductDto">
+            <summary>
+            The product data transfer object model class
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.ProductDto.Id">
+            <summary>
+            The product id to uniquely identify the product
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.ProductDto.SellerId">
+            <summary>
+            The select id that is mapped to identify the user
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.ProductDto.Cost">
+            <summary>
+            The cost of product
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.ProductDto.ProductName">
+            <summary>
+            The name of product
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.ProductDto.AmountAvailable">
+            <summary>
+            The balance amount
+            </summary>
+        </member>
+        <member name="T:WebApi.Models.DTOs.ProductUpdateDto">
+            <summary>
+            The product data transfer object model class
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.ProductUpdateDto.Id">
+            <summary>
+            The product id to uniquely identify the product
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.ProductUpdateDto.SellerId">
+            <summary>
+            The select id that is mapped to identify the user
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.ProductUpdateDto.Cost">
+            <summary>
+            The cost of product
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.ProductUpdateDto.ProductName">
+            <summary>
+            The name of product
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.ProductUpdateDto.AmountAvailable">
+            <summary>
+            The balance amount
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.UserCreateDto.UserName">
+            <summary>
+            The user name
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.UserCreateDto.Password">
+            <summary>
+            The password
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.UserCreateDto.Deposit">
+            <summary>
+            The deposit amount
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.UserCreateDto.Role">
+            <summary>
+            The user roles
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.UserDto.UserId">
+            <summary>
+            The user Id to uniquely identify the user
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.UserDto.UserName">
+            <summary>
+            The user name
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.UserDto.Password">
+            <summary>
+            The password
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.UserDto.Deposit">
+            <summary>
+            The deposit amount
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.UserDto.Role">
+            <summary>
+            The user roles
+            </summary>
+        </member>
+        <member name="T:WebApi.Models.Product">
+            <summary>
+            The product model class
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.Product.id">
+            <summary>
+            The product id to uniquely identify a product
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.Product.sellerId">
+            <summary>
+            The seller id which specifies the unique user id
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.Product.cost">
+            <summary>
+            Specifies the cost of product
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.Product.productName">
+            <summary>
+            Specifies the product name
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.Product.amountAvailable">
+            <summary>
+            Specifies the balance amount in account
+            </summary>
+        </member>
+        <member name="T:WebApi.Models.User">
+            <summary>
+            The user model class
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.User.UserId">
+            <summary>
+            The user Id to uniquely identify the user
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.User.UserName">
+            <summary>
+            The user name
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.User.Password">
+            <summary>
+            The password
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.User.Deposit">
+            <summary>
+            The deposit amount
+            </summary>
+        </member>
+        <member name="T:WebApi.Models.User.RoleTye">
+            <summary>
+            The user roles
+            </summary>
+        </member>
+        <member name="F:WebApi.Models.User.RoleTye.seller">
+            <summary>
+            The seller
+            </summary>
+        </member>
+        <member name="F:WebApi.Models.User.RoleTye.buyer">
+            <summary>
+            The buyer
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.User.Role">
+            <summary>
+            The role of user
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.User.Token">
+            <summary>
+            The token
+            </summary>
+        </member>
+        <member name="T:WebApi.Program">
+            <summary>
+            The program
+            </summary>
+        </member>
+        <member name="M:WebApi.Program.Main(System.String[])">
+            <summary>
+            The Main method
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:WebApi.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            To create and configure a builder object
+            </summary>
+            <param name="args">The args</param>
+            <returns>IHostBuilder instance</returns>
+        </member>
+        <member name="T:WebApi.Repository.IRepository.IProductRepository">
+            <summary>
+            The product repository interface
+            </summary>
+        </member>
+        <member name="M:WebApi.Repository.IRepository.IProductRepository.GetProducts">
+            <summary>
+            Method to get all products
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Repository.IRepository.IProductRepository.GetProduct(System.Int32)">
+            <summary>
+            Method to get individual product
+            </summary>
+            <param name="id">The product id</param>
+            <returns>The product objec</returns>
+        </member>
+        <member name="M:WebApi.Repository.IRepository.IProductRepository.ProductExists(System.String)">
+            <summary>
+            Check whether the product exists or not based on name
+            </summary>
+            <param name="name">The product name</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.IRepository.IProductRepository.ProductExists(System.Int32)">
+            <summary>
+            Check whether the product exists or not based on id
+            </summary>
+            <param name="id">The product id</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.IRepository.IProductRepository.CreateProduct(WebApi.Models.Product)">
+            <summary>
+            To create a new product
+            </summary>
+            <param name="product">The product object</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.IRepository.IProductRepository.UpdateProduct(WebApi.Models.Product)">
+            <summary>
+            To update a product
+            </summary>
+            <param name="product">The product object</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.IRepository.IProductRepository.DeleteProduct(WebApi.Models.Product)">
+            <summary>
+            To delete a product
+            </summary>
+            <param name="product">The product object</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.IRepository.IProductRepository.Save">
+            <summary>
+            Method to save a product
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:WebApi.Repository.IRepository.IUserRepository">
+            <summary>
+            The user repository interface
+            </summary>
+        </member>
+        <member name="M:WebApi.Repository.IRepository.IUserRepository.GetUsers">
+            <summary>
+            Method to get all user
+            </summary>
+            <returns>List of users</returns>
+        </member>
+        <member name="M:WebApi.Repository.IRepository.IUserRepository.GetUser(System.Int32)">
+            <summary>
+            Method to get individual user
+            </summary>
+            <param name="id">The user id</param>
+            <returns>The user objec</returns>
+        </member>
+        <member name="M:WebApi.Repository.IRepository.IUserRepository.UserExists(System.String)">
+            <summary>
+            Check whether the user exists or not based on name
+            </summary>
+            <param name="name">The user name</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.IRepository.IUserRepository.UserExists(System.Int32)">
+            <summary>
+            Check whether the user exists or not based on id
+            </summary>
+            <param name="id">The user id</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.IRepository.IUserRepository.CreateUser(WebApi.Models.User)">
+            <summary>
+            To create a new user
+            </summary>
+            <param name="user">The user object</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.IRepository.IUserRepository.UpdateUser(WebApi.Models.User)">
+            <summary>
+            To update a user
+            </summary>
+            <param name="user">The user object</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.IRepository.IUserRepository.DeleteUser(WebApi.Models.User)">
+            <summary>
+            To delete a user
+            </summary>
+            <param name="user">The user object</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.IRepository.IUserRepository.Save">
+            <summary>
+            Method to save a user
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Repository.IRepository.IUserRepository.IsUniqueUser(System.String)">
+            <summary>
+            To uniquely identify the user
+            </summary>
+            <param name="userName">The user name</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.IRepository.IUserRepository.Authenticate(System.String,System.String)">
+            <summary>
+            Authentication method
+            </summary>
+            <param name="userName">The user name</param>
+            <param name="password">The password</param>
+            <returns>The user instance</returns>
+        </member>
+        <member name="T:WebApi.Repository.ProductRepository">
+            <summary>
+            The product repository
+            </summary>
+        </member>
+        <member name="M:WebApi.Repository.ProductRepository.#ctor(WebApi.Data.ApplicationDbContext)">
+            <summary>
+            The Product Repository constructor
+            </summary>
+            <param name="db">The DB context</param>
+        </member>
+        <member name="M:WebApi.Repository.ProductRepository.CreateProduct(WebApi.Models.Product)">
+            <summary>
+            To Create new product
+            </summary>
+            <param name="product"></param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.ProductRepository.DeleteProduct(WebApi.Models.Product)">
+            <summary>
+            To delete a product
+            </summary>
+            <param name="product">The product object</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.ProductRepository.GetProduct(System.Int32)">
+            <summary>
+            Get individual product by id
+            </summary>
+            <param name="id">The product id</param>
+            <returns>The product object</returns>
+        </member>
+        <member name="M:WebApi.Repository.ProductRepository.GetProducts">
+            <summary>
+            The list of all products
+            </summary>
+            <returns>list of products from db</returns>
+        </member>
+        <member name="M:WebApi.Repository.ProductRepository.ProductExists(System.String)">
+            <summary>
+            Check whether the product exists or not by its name
+            </summary>
+            <param name="name">The product name</param>
+            <returns>The product</returns>
+        </member>
+        <member name="M:WebApi.Repository.ProductRepository.ProductExists(System.Int32)">
+            <summary>
+            Check whether the product exists or not by its id
+            </summary>
+            <param name="id">The product id</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.ProductRepository.Save">
+            <summary>
+            The Save method
+            </summary>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.ProductRepository.UpdateProduct(WebApi.Models.Product)">
+            <summary>
+            Method to update the product
+            </summary>
+            <param name="product">The product object</param>
+            <returns>bool</returns>
+        </member>
+        <member name="T:WebApi.Repository.UserRepository">
+            <summary>
+            The user repository
+            </summary>
+        </member>
+        <member name="M:WebApi.Repository.UserRepository.#ctor(WebApi.Data.ApplicationDbContext,Microsoft.Extensions.Options.IOptions{WebApi.AppSettings})">
+            <summary>
+            The user Repository constructor
+            </summary>
+            <param name="db">The DB context</param>
+        </member>
+        <member name="M:WebApi.Repository.UserRepository.CreateUser(WebApi.Models.User)">
+            <summary>
+            To Create new user
+            </summary>
+            <param name="user"></param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.UserRepository.DeleteUser(WebApi.Models.User)">
+            <summary>
+            To delete a user
+            </summary>
+            <param name="user">The user object</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.UserRepository.GetUser(System.Int32)">
+            <summary>
+            Get individual user by id
+            </summary>
+            <param name="id">The user id</param>
+            <returns>The user object</returns>
+        </member>
+        <member name="M:WebApi.Repository.UserRepository.GetUsers">
+            <summary>
+            The list of all users
+            </summary>
+            <returns>list of users from db</returns>
+        </member>
+        <member name="M:WebApi.Repository.UserRepository.UserExists(System.String)">
+            <summary>
+            Check whether the user exists or not by its name
+            </summary>
+            <param name="name">The user name</param>
+            <returns>The user</returns>
+        </member>
+        <member name="M:WebApi.Repository.UserRepository.UserExists(System.Int32)">
+            <summary>
+            Check whether the user exists or not by its id
+            </summary>
+            <param name="id">The user id</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.UserRepository.Save">
+            <summary>
+            The Save method
+            </summary>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.UserRepository.UpdateUser(WebApi.Models.User)">
+            <summary>
+            Method to update the user
+            </summary>
+            <param name="user">The user object</param>
+            <returns>bool</returns>
+        </member>
+        <member name="T:WebApi.Startup">
+            <summary>
+            The StartUp Class
+            </summary>
+        </member>
+        <member name="M:WebApi.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            The startup constructor
+            </summary>
+            <param name="configuration">The configuration</param>
+        </member>
+        <member name="P:WebApi.Startup.Configuration">
+            <summary>
+            The configuration interface declaration
+            </summary>
+        </member>
+        <member name="M:WebApi.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services">The service collection</param>
+        </member>
+        <member name="M:WebApi.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app">The application builder object</param>
+            <param name="env">The environment variable</param>
+        </member>
+        <member name="T:WebApi.WeatherForecast">
+            <summary>
+            The weather forecast model class
+            </summary>
+        </member>
+        <member name="P:WebApi.WeatherForecast.Date">
+            <summary>
+            The date
+            </summary>
+        </member>
+        <member name="P:WebApi.WeatherForecast.TemperatureC">
+            <summary>
+            The Temperature in C
+            </summary>
+        </member>
+        <member name="P:WebApi.WeatherForecast.TemperatureF">
+            <summary>
+            The temperature in F
+            </summary>
+        </member>
+        <member name="P:WebApi.WeatherForecast.Summary">
+            <summary>
+            The summary
+            </summary>
+        </member>
+    </members>
+</doc>

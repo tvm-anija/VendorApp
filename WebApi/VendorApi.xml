@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApi</name>
+    </assembly>
+    <members>
+        <member name="M:WebApi.Controllers.ProductController.GetProducts">
+            <summary>
+            Get list of products
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.ProductController.GetProduct(System.Int32)">
+            <summary>
+            Get individual products
+            </summary>
+            <param name="productId">The id of the product</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
