@@ -53,6 +53,13 @@ namespace WebApi.Repository.IRepository
         bool UpdateUser(User user);
 
         /// <summary>
+        /// To reset deposit
+        /// </summary>
+        /// <param name="user">The user object</param>
+        /// <returns>bool</returns>
+        bool ResetDeposit(User user);
+
+        /// <summary>
         /// To delete a user
         /// </summary>
         /// <param name="user">The user object</param>

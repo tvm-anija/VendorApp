@@ -514,6 +514,13 @@
             <param name="user">The user object</param>
             <returns>bool</returns>
         </member>
+        <member name="M:WebApi.Repository.IRepository.IUserRepository.ResetDeposit(WebApi.Models.User)">
+            <summary>
+            To reset deposit
+            </summary>
+            <param name="user">The user object</param>
+            <returns>bool</returns>
+        </member>
         <member name="M:WebApi.Repository.IRepository.IUserRepository.DeleteUser(WebApi.Models.User)">
             <summary>
             To delete a user
@@ -668,6 +675,13 @@
         <member name="M:WebApi.Repository.UserRepository.UpdateUser(WebApi.Models.User)">
             <summary>
             Method to update the user
+            </summary>
+            <param name="user">The user object</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.UserRepository.ResetDeposit(WebApi.Models.User)">
+            <summary>
+            Method to reset the user balance
             </summary>
             <param name="user">The user object</param>
             <returns>bool</returns>

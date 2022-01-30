@@ -113,6 +113,17 @@ namespace WebApi.Repository
             return Save();
         }
 
+        /// <summary>
+        /// Method to reset the user balance
+        /// </summary>
+        /// <param name="user">The user object</param>
+        /// <returns>bool</returns>
+        public bool ResetDeposit(User user)
+        {
+            _db.users.Update(user);
+            return Save();
+        }
+
         bool IUserRepository.IsUniqueUser(string userName)
         {
             throw new NotImplementedException();
