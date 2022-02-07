@@ -51,6 +51,33 @@
             <param name="productId">The product id</param>
             <returns></returns>
         </member>
+        <member name="T:WebApi.Controllers.ShoppingCartController">
+            <summary>
+            The product controller
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.ShoppingCartController.#ctor(WebApi.Repository.IRepository.IProductRepository,AutoMapper.IMapper)">
+            <summary>
+            The product controller constructor
+            </summary>
+            <param name="iProductRepository"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:WebApi.Controllers.ShoppingCartController.AddItemToShoppingCart(WebApi.Models.DTOs.ShoppingCartDto)">
+            <summary>
+            To create product
+            </summary>
+            <param name="shoppingCartDto"></param>
+            <returns>The created product</returns>
+        </member>
+        <member name="M:WebApi.Controllers.ShoppingCartController.UpdateShoppingCart(System.Int32,WebApi.Models.DTOs.ShoppingCartDto)">
+            <summary>
+            Update the product
+            </summary>
+            <param name="shoppingCartId">The product Id</param>
+            <param name="productDto">The product model</param>
+            <returns></returns>
+        </member>
         <member name="T:WebApi.Controllers.UserController">
             <summary>
             The user controller
@@ -98,7 +125,7 @@
             <param name="userId">The user id</param>
             <returns></returns>
         </member>
-        <member name="M:WebApi.Controllers.UserController.Authenticate(WebApi.Models.User)">
+        <member name="M:WebApi.Controllers.UserController.Authenticate(WebApi.Models.DTOs.LoginDto)">
             <summary>
             User Authentication
             </summary>
@@ -179,6 +206,16 @@
         <member name="M:WebApi.Mapper.VendorMapping.#ctor">
             <summary>
             The vendor mapping constructor
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.DepositDto.UserId">
+            <summary>
+            The user Id to uniquely identify the user
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.DTOs.DepositDto.Deposit">
+            <summary>
+            The deposit amount
             </summary>
         </member>
         <member name="T:WebApi.Models.DTOs.ProductCreateDto">
@@ -468,6 +505,20 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:WebApi.Repository.IRepository.IProductRepository.AddItemToShoppingCart(WebApi.Models.ShoppingCart)">
+            <summary>
+            To add an item to shopping cart
+            </summary>
+            <param name="product">The product object</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.IRepository.IProductRepository.UpdateShopingCart(WebApi.Models.ShoppingCart)">
+            <summary>
+            To update an item in shopping cart
+            </summary>
+            <param name="product">The product object</param>
+            <returns>bool</returns>
+        </member>
         <member name="T:WebApi.Repository.IRepository.IUserRepository">
             <summary>
             The user repository interface
@@ -539,6 +590,13 @@
             To uniquely identify the user
             </summary>
             <param name="userName">The user name</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.IRepository.IUserRepository.UpdateDeposit(WebApi.Models.User)">
+            <summary>
+            Method to update the buyer balance
+            </summary>
+            <param name="user">The user object</param>
             <returns>bool</returns>
         </member>
         <member name="M:WebApi.Repository.IRepository.IUserRepository.Authenticate(System.String,System.String)">
@@ -614,6 +672,27 @@
             <param name="product">The product object</param>
             <returns>bool</returns>
         </member>
+        <member name="M:WebApi.Repository.ProductRepository.AddItemToShoppingCart(WebApi.Models.ShoppingCart)">
+            <summary>
+            To add an item to shopping cart
+            </summary>
+            <param name="product">The product object</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.ProductRepository.UpdateShopingCart(WebApi.Models.ShoppingCart)">
+            <summary>
+            To update an item in shopping cart
+            </summary>
+            <param name="product">The product object</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.ProductRepository.BuyProduct(WebApi.Models.Product)">
+            <summary>
+            Method to buy the product
+            </summary>
+            <param name="product">The product object</param>
+            <returns>bool</returns>
+        </member>
         <member name="T:WebApi.Repository.UserRepository">
             <summary>
             The user repository
@@ -682,6 +761,13 @@
         <member name="M:WebApi.Repository.UserRepository.ResetDeposit(WebApi.Models.User)">
             <summary>
             Method to reset the user balance
+            </summary>
+            <param name="user">The user object</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:WebApi.Repository.UserRepository.UpdateDeposit(WebApi.Models.User)">
+            <summary>
+            Method to update the buyer balance
             </summary>
             <param name="user">The user object</param>
             <returns>bool</returns>

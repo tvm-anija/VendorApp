@@ -1,0 +1,9 @@
+﻿@model VendorWeb.Models.User
+
+<h1>Register</h1>
+<form method="post">
+    <input asp-for="UserName" type="text" placeholder="User Name" />
+    <input asp-for="Password" type="password" placeholder="Password" />
+    <select asp-for="Role" asp-items="Html.GetEnumSelectList<User.RoleTye>()" class="form-control"></select>
+        <button type="submit" value="Submit">Register</button>
+</form>

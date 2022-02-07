@@ -176,9 +176,9 @@ namespace WebApi.Controllers
         /// <returns>OK</returns>
         [AllowAnonymous]
         [HttpPost("authenticate")]
-        public IActionResult Authenticate([FromBody] User model)
+        public IActionResult Authenticate(LoginDto loginDto)
         {
-            var user = _iUserRepository.Authenticate(model.UserName, model.Password);
+            var user = _iUserRepository.Authenticate(loginDto.Username, loginDto.Password);
             if (user == null)
             {
                 return BadRequest(new { message = "Username or Password is incorrect" });

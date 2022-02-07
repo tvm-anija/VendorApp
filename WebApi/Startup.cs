@@ -113,6 +113,25 @@ namespace WebApi
                         Url = new Uri("https://github.com/tvm-anija")
                     }
                 });
+
+                options.SwaggerDoc("VendorMachineOpenApiSpecDeposit",
+                new Microsoft.OpenApi.Models.OpenApiInfo()
+                {
+                    Title = "Vendor API Deposit",
+                    Version = "1",
+                    Description = "Vending Machine API Deposit",
+                    Contact = new Microsoft.OpenApi.Models.OpenApiContact()
+                    {
+                        Email = "anijageorge@gmail.com",
+                        Name = "Anija George",
+                        Url = new Uri("https://github.com/tvm-anija")
+                    },
+                    License = new Microsoft.OpenApi.Models.OpenApiLicense()
+                    {
+                        Name = "Api License",
+                        Url = new Uri("https://github.com/tvm-anija")
+                    }
+                });
                 options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n "+
@@ -180,7 +199,10 @@ namespace WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
             app.UseHttpsRedirection();
             app.UseSwagger();
             app.UseSwaggerUI(options =>
@@ -188,10 +210,12 @@ namespace WebApi
                 options.SwaggerEndpoint("/Swagger/VendorMachineOpenApiSpecProduct/swagger.json", "Vendor API Product");
                 options.SwaggerEndpoint("/Swagger/VendorMachineOpenApiSpecUser/swagger.json", "Vendor API User");
                 options.SwaggerEndpoint("/Swagger/VendorMachineOpenApiSpecReset/swagger.json", "Vendor API Reset");
+                options.SwaggerEndpoint("Swagger/VendorMachineOpenApiSpecDeposit/swagger.json", "Vendor API Deposit");
                 options.RoutePrefix = "";
             });
 
             app.UseRouting();
+            
             app.UseAuthentication();
             app.UseAuthorization();
 

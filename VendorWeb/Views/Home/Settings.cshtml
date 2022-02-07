@@ -1,0 +1,16 @@
+﻿@model VendorWeb.Models.User
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor httpAcc
+
+<h1>Settings</h1>
+<form method="post">
+    <input asp-for="UserName" type="text" placeholder="User Name" />
+    <input asp-for="Password" type="password" placeholder="Password" />
+    <select asp-for="Role" asp-items="Html.GetEnumSelectList<User.RoleTye>()" class="form-control"></select>
+    <button type="submit" name="submitButton" value="update">Update</button>
+    <button type="submit" name="submitButton" value="delete">Delete</button>
+    @if(httpAcc.HttpContext.Session.GetString("Role") == "buyer")
+    {
+        <button type="submit" name="submitButton" value="reset">Reset</button>
+    }
+</form>

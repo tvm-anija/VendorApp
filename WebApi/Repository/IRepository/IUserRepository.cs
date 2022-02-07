@@ -78,6 +78,13 @@ namespace WebApi.Repository.IRepository
         /// <param name="userName">The user name</param>
         /// <returns>bool</returns>
         bool IsUniqueUser(string userName);
+
+        /// <summary>
+        /// Method to update the buyer balance
+        /// </summary>
+        /// <param name="user">The user object</param>
+        /// <returns>bool</returns>
+        bool UpdateDeposit(User user);
         /// <summary>
         /// Authentication method
         /// </summary>

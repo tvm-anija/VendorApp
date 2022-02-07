@@ -64,5 +64,19 @@ namespace WebApi.Repository.IRepository
         /// </summary>
         /// <returns></returns>
         bool Save();
+
+        /// <summary>
+        /// To add an item to shopping cart
+        /// </summary>
+        /// <param name="product">The product object</param>
+        /// <returns>bool</returns>
+        bool AddItemToShoppingCart(ShoppingCart shoppingCart);
+
+        /// <summary>
+        /// To update an item in shopping cart
+        /// </summary>
+        /// <param name="product">The product object</param>
+        /// <returns>bool</returns>
+        bool UpdateShopingCart(ShoppingCart shoppingCart);
     }
 }

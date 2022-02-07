@@ -48,6 +48,27 @@ namespace WebApi.Migrations
                     b.ToTable("products");
                 });
 
+            modelBuilder.Entity("WebApi.Models.ShoppingCart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MenuItemId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("shoppingCarts");
+                });
+
             modelBuilder.Entity("WebApi.Models.User", b =>
                 {
                     b.Property<int>("UserId")

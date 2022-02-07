@@ -30,5 +30,6 @@ namespace WebApi.Data
         /// The users DB set
         /// </summary>
         public DbSet<User> users { get; set; }
+        public DbSet<ShoppingCart> shoppingCarts { get; set; }
     }
 }

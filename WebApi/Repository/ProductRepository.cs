@@ -106,5 +106,38 @@ namespace WebApi.Repository
             _db.products.Update(product);
             return Save();
         }
+
+        /// <summary>
+        /// To add an item to shopping cart
+        /// </summary>
+        /// <param name="product">The product object</param>
+        /// <returns>bool</returns>
+       public bool AddItemToShoppingCart(ShoppingCart shoppingCart)
+        {
+            _db.shoppingCarts.Add(shoppingCart);
+            return Save();
+        }
+
+        /// <summary>
+        /// To update an item in shopping cart
+        /// </summary>
+        /// <param name="product">The product object</param>
+        /// <returns>bool</returns>
+        public bool UpdateShopingCart(ShoppingCart shoppingCart)
+        {
+            _db.shoppingCarts.Update(shoppingCart);
+            return Save();
+        }
+
+        /// <summary>
+        /// Method to buy the product
+        /// </summary>
+        /// <param name="product">The product object</param>
+        /// <returns>bool</returns>
+        public bool BuyProduct(Product product)
+        {
+            _db.products.Update(product);
+            return Save();
+        }
     }
 }
