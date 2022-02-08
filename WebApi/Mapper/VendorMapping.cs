@@ -23,6 +23,8 @@ namespace WebApi.Mapper
             CreateMap<Product, ProductCreateDto>().ReverseMap();
             CreateMap<Product, ProductUpdateDto>().ReverseMap();
             CreateMap<User, UserCreateDto>().ReverseMap();
+            CreateMap<ShoppingCart, ShoppingCartDto>().ReverseMap();
+            CreateMap<Buy, BuyDto>().ReverseMap();
         }
     }
 }

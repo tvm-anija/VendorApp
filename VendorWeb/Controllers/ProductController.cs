@@ -89,28 +89,74 @@ namespace VendorWeb.Controllers
         {
             return View(new Product() { });
         }
+
+        public async Task<IActionResult> ShoppingCart(int? id)
+        {
+            ShoppingCart shoppingCart = new ShoppingCart();
+            if (id == null)
+            {
+                //this will be true for insert
+                return View(shoppingCart);
+            }
+
+            //update
+           Product product = await _productRepository.GetAsync(SD.productPath, id.GetValueOrDefault(), HttpContext.Session.GetString("JWToken")?.ToString());
+            if (product == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                shoppingCart.ProductName = product.ProductName;
+                shoppingCart.Cost = product.Cost;
+                shoppingCart.AmountAvailable = product.AmountAvailable;
+
+            }
+            return View(shoppingCart);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ShoppingCart(ShoppingCart obj)
         {
-            obj.SellerId = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
+            obj.ApplicationUserId = HttpContext.Session.GetString("UserID");
+            obj.MenuItemId = obj.Id;
+            obj.Id = 0;
             if (ModelState.IsValid)
             {
-                if (obj.Id == 0)
-                {
-                    await _shoppingCartRepository.CreateAsync(SD.shoppingCart, obj, HttpContext.Session.GetString("JWToken")?.ToString());
-                }
-                else
-                {
-                    await _shoppingCartRepository.UpdateAsync(SD.shoppingCart + obj.Id, obj, HttpContext.Session.GetString("JWToken")?.ToString());
-                }
-                return RedirectToAction(nameof(Index));
+
+                 ShoppingCart shoppingCart =   await _shoppingCartRepository.CreateShoppingCart(SD.shoppingCart, obj, HttpContext.Session.GetString("JWToken")?.ToString());
+                return RedirectToAction(nameof(CartSummary));
             }
             else
             {
                 return View(obj);
             }
 
+        }
+        public async Task<IActionResult> CartSummary(ShoppingCart buyDto)
+        {
+            int total = 0;
+            int userId = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
+            buyDto = await _shoppingCartRepository.GetAsync(SD.shoppingCart, userId, HttpContext.Session.GetString("JWToken")?.ToString());
+            foreach(var item in buyDto.products)
+            {
+                foreach(var cart in buyDto.shoppingCarts)
+                {
+                    if (item.Id == cart.MenuItemId)
+                    {
+                        total = total + (item.Cost*cart.Count);
+                    }
+                }
+            }
+            buyDto.Cost = total;
+            buyDto.AmountAvailable = buyDto.User.Deposit - total;
+            return View(buyDto);
+        }
+        public async Task<IActionResult> GetCartSummary()
+        {
+            int userId = Convert.ToInt32(HttpContext.Session.GetString("UserID"));
+            return Json(new { data = await _shoppingCartRepository.GetAsync(SD.shoppingCart, userId, HttpContext.Session.GetString("JWToken")?.ToString()) });
         }
     }
 }

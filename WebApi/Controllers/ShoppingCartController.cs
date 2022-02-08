@@ -22,6 +22,7 @@ namespace WebApi.Controllers
     public class ShoppingCartController : ControllerBase
     {
         private readonly IProductRepository _iProductRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
 
         /// <summary>
@@ -29,9 +30,10 @@ namespace WebApi.Controllers
         /// </summary>
         /// <param name="iProductRepository"></param>
         /// <param name="mapper"></param>
-        public ShoppingCartController(IProductRepository iProductRepository, IMapper mapper)
+        public ShoppingCartController(IProductRepository iProductRepository,IUserRepository userRepository, IMapper mapper)
         {
             _iProductRepository = iProductRepository;
+            _userRepository = userRepository;
             _mapper = mapper;
         }
 
@@ -59,7 +61,53 @@ namespace WebApi.Controllers
                 ModelState.AddModelError("", $"Something went wrong when saving the record {productObj.ApplicationUserId}");
                 return StatusCode(500, ModelState);
             }
-            return CreatedAtRoute("GetProduct", new { productId = productObj.Id }, productObj);
+            Buy buy = new Buy();
+            buy.User = _userRepository.GetUser(Convert.ToInt32(shoppingCartDto.ApplicationUserId));
+            buy.shoppingCarts = _iProductRepository.GetShoppigCart(shoppingCartDto.ApplicationUserId);
+
+            if (buy.shoppingCarts.Count > 0)
+            {
+                List<ShoppingCart> shop = buy.shoppingCarts.ToList();
+                List<Product> pdts = new List<Product>();
+                for(int i = 0; i < buy.shoppingCarts.Count; i++)
+                {
+                    Product product = _iProductRepository.GetProduct(shop[i].MenuItemId);
+                    pdts.Add(product);
+                }
+                buy.products = pdts;
+            }
+            return Ok(buy);
+        }
+
+        /// <summary>
+        /// Get list of products
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [HttpGet("{userId:int}", Name = "GetShoppingCartItems")]
+        [ProducesResponseType(200, Type = typeof(ProductDto))]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesDefaultResponseType]
+        public IActionResult GetShoppingCartItems(int userId)
+        {
+            Buy buy = new Buy();
+            buy.User = _userRepository.GetUser(Convert.ToInt32(userId));
+            buy.shoppingCarts = _iProductRepository.GetShoppigCart(userId.ToString());
+
+            if (buy.shoppingCarts.Count > 0)
+            {
+                List<ShoppingCart> shop = buy.shoppingCarts.ToList();
+                List<Product> pdts = new List<Product>();
+                for (int i = 0; i < buy.shoppingCarts.Count; i++)
+                {
+                    Product product = _iProductRepository.GetProduct(shop[i].MenuItemId);
+                    pdts.Add(product);
+                }
+                buy.products = pdts;
+            }
+            var objDto = _mapper.Map<BuyDto>(buy);
+            return Ok(objDto);
         }
 
         /// <summary>

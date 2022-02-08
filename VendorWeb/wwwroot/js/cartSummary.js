@@ -7,7 +7,7 @@ $(document).ready(function () {
 function loadDataTable() {
     dataTable = $('#tblData').DataTable({
         "ajax": {
-            "url": "/Product/GetAllProducts",
+            "url": "/Product/CartSummary",
             "type": "GET",
             "datatype": "json"
         },
@@ -18,7 +18,7 @@ function loadDataTable() {
                 "data": "id",
                 "render": function (data) {
                     return `<div class="text-center">
-                    <a href="/Product/ShoppingCart/${data}" class='btn btn-success text-white'
+                    <a class='btn btn-success text-white'
                     style='cursor:pointer;'><i class='fas fa-eye'></i></a></div>`;
                 }, "width": "30%"
             }

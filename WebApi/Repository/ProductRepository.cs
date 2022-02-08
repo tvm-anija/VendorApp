@@ -57,6 +57,10 @@ namespace WebApi.Repository
             return _db.products.Include(c => c.User).FirstOrDefault(a => a.id == id);
         }
 
+        public ICollection<ShoppingCart> GetShoppigCart(string userId)
+        {
+            return _db.shoppingCarts.OrderBy(a => a.MenuItemId).Where(b => b.ApplicationUserId == userId).ToList();
+        }
         /// <summary>
         /// The list of all products
         /// </summary>
@@ -112,9 +116,18 @@ namespace WebApi.Repository
         /// </summary>
         /// <param name="product">The product object</param>
         /// <returns>bool</returns>
-       public bool AddItemToShoppingCart(ShoppingCart shoppingCart)
+        public bool AddItemToShoppingCart(ShoppingCart shoppingCart)
         {
-            _db.shoppingCarts.Add(shoppingCart);
+            ShoppingCart isShoppingCartExists = _db.shoppingCarts.Where(a => (a.ApplicationUserId == shoppingCart.ApplicationUserId) && (a.MenuItemId == shoppingCart.MenuItemId)).FirstOrDefault();
+            if (isShoppingCartExists!=null)
+            {
+                isShoppingCartExists.Count = shoppingCart.Count;
+                _db.shoppingCarts.Update(isShoppingCartExists);
+            }
+            else
+            {
+                _db.shoppingCarts.Add(shoppingCart);
+            }
             return Save();
         }
 

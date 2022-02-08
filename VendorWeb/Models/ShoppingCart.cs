@@ -16,7 +16,8 @@ namespace VendorWeb.Models
         /// <summary>
         /// The select id that is mapped to identify the user
         /// </summary>
-        public int SellerId { get; set; }
+        public string ApplicationUserId { get; set; }
+        public int MenuItemId { get; set; }
 
         /// <summary>
         /// The cost of product
@@ -35,5 +36,10 @@ namespace VendorWeb.Models
         /// </summary>
         public int AmountAvailable { get; set; }
         public int Count { get; set; }
+
+        public ICollection<ShoppingCart> shoppingCarts { get; set; }
+        public ICollection<Product> products { get; set; }
+        public User User { get; set; }
+        public int ItemTotal { get; set; }
     }
 }

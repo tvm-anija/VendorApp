@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using VendorWeb.Models;
 using VendorWeb.Repository.IRepository;
 
 namespace VendorWeb.Repository
@@ -44,7 +45,35 @@ namespace VendorWeb.Repository
                 return false;
             }
         }
-
+        public async Task<ShoppingCart> CreateShoppingCart(string url, T objToCreate, string token = "")
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            if (objToCreate != null)
+            {
+                request.Content = new StringContent(JsonConvert.SerializeObject(objToCreate), Encoding.UTF8, "application/json");
+            }
+            else
+            {
+                return null;
+            }
+            var client = _clientFactory.CreateClient();
+            if (token?.Length != 0)
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            }
+            HttpResponseMessage response = await client.SendAsync(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var jsonString = await response.Content.ReadAsStringAsync();
+                ShoppingCart shopping = JsonConvert.DeserializeObject<ShoppingCart>(jsonString);
+                return shopping;
+                //return JsonConvert.DeserializeObject<IEnumerable<T>>(jsonString);
+            }
+            else
+            {
+                return null;
+            }
+        }
         public async Task<bool> DeleteAsync(string url, int Id, string token="")
         {
             var request = new HttpRequestMessage(HttpMethod.Delete, url+Id);

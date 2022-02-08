@@ -78,5 +78,6 @@ namespace WebApi.Repository.IRepository
         /// <param name="product">The product object</param>
         /// <returns>bool</returns>
         bool UpdateShopingCart(ShoppingCart shoppingCart);
+        ICollection<ShoppingCart> GetShoppigCart(string userId);
     }
 }

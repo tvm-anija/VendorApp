@@ -3,7 +3,7 @@
     var title = "Product Details";
 }
 
-<form method="post" asp-action="Upsert">
+<form method="post" asp-action="ShoppingCart">
     <div class="row px-2 mx-2 backgroundWhite border">
 
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -16,7 +16,7 @@
             </div>
             <div class="col-8">
                 <input asp-for="AmountAvailable" class="form-control" readonly />
-                <input asp-for="SellerId" class="form-control" hidden />
+                <input asp-for="ApplicationUserId" class="form-control" hidden />
             </div>
         </div>
         <div class="col-8">

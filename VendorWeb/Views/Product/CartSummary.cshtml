@@ -1,0 +1,114 @@
+﻿@model VendorWeb.Models.ShoppingCart
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor httpAcc
+<div class="p-4" style="border-radius:20px;">
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-primary">Order Summary</h2>
+        </div>
+    </div>
+    <br />
+    <br />
+    @foreach (var item in Model.products)
+    {
+        @foreach (var cart in Model.shoppingCarts)
+        {
+
+
+            @if (item.Id == cart.MenuItemId)
+            {
+                <div>
+                    <span>Product : </span> @item.ProductName - <span>Cost : </span> @item.Cost - <span>Count : </span> @cart.Count
+                    <hr />
+                </div>
+            }
+        }
+    }
+    <div class="form-group row">
+        <div class="col-4">
+            <label>Item Total</label>
+        </div>
+        <div class="col-8">
+            <input id="txtDeposit" asp-for="Cost" class="form-control" readonly />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-4">
+            <label>Amount Available</label>
+        </div>
+        <div class="col-8">
+            <input id="txtDeposit" asp-for="User.Deposit" class="form-control" readonly />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-4">
+            <label>Balance</label>
+        </div>
+        <div class="col-8">
+            <input id="txtDeposit" asp-for="AmountAvailable" class="form-control" readonly />
+        </div>
+    </div>
+    @if (Model.ItemTotal > 0)
+    {
+        if (Model.AmountAvailable < 0)
+        {
+            <span style="color:red">Sorry! You don't have enough amount to buy the items</span>
+        }
+        else
+        {
+            <button>Proceed</button>
+        }
+    }
+
+    <hr />
+    <h4>Changes</h4>
+    <hr />
+    @if (Model.AmountAvailable > 5)
+    {
+        int balance = Model.AmountAvailable;
+        int hundredCent, fiftyCent, twentyCent, tenCent, fiveCent = 0;
+
+
+        if (balance / 100 > 1)
+        {
+            hundredCent = balance / 100;
+            balance = balance % 100;
+            <span>100 cent coins: </span> @hundredCent;
+            <br />
+        }
+        if (balance / 50 > 1)
+        {
+            fiftyCent = balance / 50;
+            balance = balance % 50;
+            <span>50 cent coins: </span> @fiftyCent;
+            <br />
+        }
+        if (balance / 20 > 1)
+        {
+            twentyCent = balance / 20;
+            balance = balance % 20;
+            <span>20 cent coins: </span> @twentyCent;
+            <br />
+        }
+        if (balance / 10 > 1)
+        {
+            tenCent = balance / 10;
+            balance = balance % 10;
+            <span>10 cent coins: </span> @tenCent;
+            <br />
+        }
+        if (balance / 5 > 1)
+        {
+            fiveCent = balance / 5;
+            balance = balance % 5;
+            <span>10 cent coins: </span> @fiveCent;
+            <br />
+        }
+
+    }
+
+</div>
+
+@section Scripts{
+
+}

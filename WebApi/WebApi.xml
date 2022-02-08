@@ -56,7 +56,7 @@
             The product controller
             </summary>
         </member>
-        <member name="M:WebApi.Controllers.ShoppingCartController.#ctor(WebApi.Repository.IRepository.IProductRepository,AutoMapper.IMapper)">
+        <member name="M:WebApi.Controllers.ShoppingCartController.#ctor(WebApi.Repository.IRepository.IProductRepository,WebApi.Repository.IRepository.IUserRepository,AutoMapper.IMapper)">
             <summary>
             The product controller constructor
             </summary>
@@ -69,6 +69,12 @@
             </summary>
             <param name="shoppingCartDto"></param>
             <returns>The created product</returns>
+        </member>
+        <member name="M:WebApi.Controllers.ShoppingCartController.GetShoppingCartItems(System.Int32)">
+            <summary>
+            Get list of products
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:WebApi.Controllers.ShoppingCartController.UpdateShoppingCart(System.Int32,WebApi.Models.DTOs.ShoppingCartDto)">
             <summary>
