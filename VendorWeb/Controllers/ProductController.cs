@@ -26,9 +26,18 @@ namespace VendorWeb.Controllers
         {
             return View(new Product() { });
         }
+        public IActionResult UnAutherized()
+        {
+            return View();
+        }
 
         public async Task<IActionResult> Upsert(int? id)
         {
+            var role = HttpContext.Session.GetString("Role")?.ToString();
+            if (role == "buyer")
+            {
+                return View(nameof(UnAutherized));
+            }
             Product product = new Product();
             if (id == null)
             {

@@ -4,13 +4,13 @@
 
 <h1>Settings</h1>
 <form method="post">
-    <input asp-for="UserName" type="text" placeholder="User Name" />
-    <input asp-for="Password" type="password" placeholder="Password" />
-    <select asp-for="Role" asp-items="Html.GetEnumSelectList<User.RoleTye>()" class="form-control"></select>
-    <button type="submit" name="submitButton" value="update">Update</button>
-    <button type="submit" name="submitButton" value="delete">Delete</button>
+    <input asp-for="UserName" type="text" placeholder="User Name" /><br /><br />
+    <input asp-for="Password" type="password" placeholder="Password" /><br /><br />
+    <select asp-for="Role" asp-items="Html.GetEnumSelectList<User.RoleTye>()" class="btn-group"></select><br /><br />
+    <button type="submit" class="btn btn-primary" name="submitButton" value="update">Update</button>
+    <button type="submit" name="submitButton" class="btn btn-warning" value="delete">Delete</button>
     @if(httpAcc.HttpContext.Session.GetString("Role") == "buyer")
     {
-        <button type="submit" name="submitButton" value="reset">Reset</button>
+        <button type="submit" class="btn btn-secondary" name="submitButton" value="reset">Reset</button>
     }
 </form>
